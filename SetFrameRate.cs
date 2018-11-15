@@ -10,6 +10,12 @@ UnityでFPSを設定する方法
 				Don't Sync（垂直同期無し）
 				
 			FPSを固定する場合は"Don't Sync"（垂直同期無し）を選ぶ。
+			
+			--- 2018.11.15 ---
+			projectから設定させると、忘れることもある。
+			さらに悪いことには、実行時のQualityごとにDon't Syncを全て設定しなければならない。
+			と、言うことで、scriptから自動で設定することにした
+				QualitySettings.vSyncCount = 0; // Don't Sync
 		
 		
 		SJ note
@@ -45,6 +51,7 @@ public class SetFrameRate : MonoBehaviour {
 	float LastMeas_FrameRate = 0;
 	
 	void Awake () {
+		QualitySettings.vSyncCount = 0; // Don't Sync
 		Application.targetFrameRate = FrameRate;
 	}
 	
